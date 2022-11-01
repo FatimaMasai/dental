@@ -3,19 +3,15 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>LISTADO DE PERSONAS</h1>
+    <h1>Dashboard</h1>
+@stop 
+@section('content')
+    <p>editar</p>
 @stop
 
-@livewireStyles
-@section('content')
-    @livewire('persona.persona-table')
-@stop
-@livewireScripts
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
+@stop 
 @section('js')
-
- 
+    <script> console.log('Hi!'); </script>
 @stop

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Persona\PersonaStoreRequest;
 use App\Models\Persona;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 class PersonaController extends Controller
 {
@@ -17,12 +18,17 @@ class PersonaController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.persona.create');
     }
 
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'nombres' => 'required',
+        // ]);
+        $personas = Persona::create($request->all());
+        Alert('Éxito', 'La Tipo de Producto se ha guardado', 'success')->showConfirmButton();
+        return redirect()->route('personas.index', $personas);
     }
 
 
@@ -48,4 +54,11 @@ class PersonaController extends Controller
     {
         //
     }
+
+    public function agregar(Request $request)
+    {
+        $personas = $request->personas;
+        return view('admin.personas.index', compact('personas'));
+    }
+
 }

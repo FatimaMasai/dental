@@ -4,12 +4,28 @@
      
      <div class="bg-white">
 
-        <div class="px-6 py-4 flex items-center"> 
-         
-            <x-jet-input type="text" wire:model="search" class="w-full form-control" placeholder="Escriba que quiere buscar"/>    
-            @livewire('persona.create-persona')
+        <div class="row px-3">
+            
+            <div class="col-md-6 px-6 py-4">  
+                <x-jet-input type="text" wire:model="search" class="w-full form-control" placeholder="Escriba que quiere buscar"/>    
+            </div>
+            <div class="col-md-2"></div>
+
+            <div class="col-md-4 py-4">
+                <a href="{{route('personas.create')}}">
+                <button class="btn btn-info">
+                    CREAR REGISTRO
+                </button>
+            </a>
+                <button class="btn btn-danger">
+                    PDF
+                </button>
+                <button class="btn btn-success">
+                    EXCEL
+                </button>
+            </div> 
         </div>
- 
+         
          <div class="overflow-x-auto border-x border-t"> 
              @if ($personas->count())
                 
@@ -25,9 +41,9 @@
                          <th scope="col" class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
                              APELLIDOS
                          </th>
-                         <th scope="col" class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
+                         {{-- <th scope="col" class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
                              FECHA NAC
-                         </th>
+                         </th> --}}
                           <th scope="col" class="text-left p-4 font-mediu  font-medim text-gray-500m">
                              SEXO
                          </th>
@@ -56,9 +72,9 @@
                          <td class="p-4">
                              {{ $item->apellido_paterno }} {{ $item->apellido_materno }}
                          </td>
-                         <td class="p-4">
+                         {{-- <td class="p-4">
                              {{ $item->fecha_nac }}
-                         </td>
+                         </td> --}}
                           <td class="p-4">
                              {{ $item->sexo }}
                          </td>
@@ -69,7 +85,8 @@
                              {{ $item->email }}
                          </td>  
                          <td class="p-4">
-                            EDITAR
+                            <a href="" class="btn-sm btn btn-primary">EDITAR</a>
+                            <a href="" class="btn-sm btn btn-danger">ELIMINAR</a>
                         </td>
 
                      </tr>
@@ -96,5 +113,11 @@
  </div>
 
  @section('js')
- 
+ {{-- <script>
+    Swal.fire(
+    'Good job!',
+    'You clicked the button!',
+    'success'
+  )
+</script> --}}
  @stop

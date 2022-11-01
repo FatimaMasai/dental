@@ -1,5 +1,9 @@
 <div>
-   <button class="btn btn-success" type="submit">
-       crear
-   </button>
+    <x-jet-danger-button>
+        crear
+    </x-jet-danger-button>
+
+
+        
+    </x-jet-dialog-modal>
 </div>
