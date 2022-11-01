@@ -6,10 +6,11 @@
     <h1>Dashboard</h1>
 @stop
 
+@livewireStyles
 @section('content')
     @livewire('persona.persona-table')
 @stop
-
+@livewireScripts
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop

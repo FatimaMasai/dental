@@ -302,32 +302,39 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Dashboard',
-            //'route'       => 'admin',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
+        // [
+        //     'text'        => 'Dashboard',
+        //     'route'       => 'admin.home',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        ['header' => 'ADMINISTRATIVO'],
         [
             'text' => 'Dashboard',
-            'url'  => 'admin/settings',
+            'route'       => 'admin.home',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+
+     
+
+
+        [ 
+            'text' => 'Personas',
+            'route'  => 'personas.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/personas*'], 
+
+
         ],
         [
             'text'    => 'multilevel',
@@ -537,5 +544,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
