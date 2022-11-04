@@ -17,9 +17,11 @@
                     CREAR REGISTRO
                 </button>
             </a>
+            <a href="{{ url("admin/reportes/personas") }}">
                 <button class="btn btn-danger">
-                    PDF
+                    Exportar PDF
                 </button>
+            </a>
                 <button class="btn btn-success">
                     EXCEL
                 </button>
@@ -113,11 +115,14 @@
  </div>
 
  @section('js')
- {{-- <script>
-    Swal.fire(
-    'Good job!',
-    'You clicked the button!',
-    'success'
-  )
-</script> --}}
+ @if (session('guardar'))  
+ <script> 
+     Swal.fire(
+         'Éxito!',
+         'El Registro se creó',
+         'success'
+     )
+ </script> 
+
+@endif
  @stop

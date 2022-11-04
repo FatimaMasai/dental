@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Persona\PersonaStoreRequest;
+use App\Http\Requests\StorePersonaRequest;
 use App\Models\Persona;
+use DateTime;
 use Illuminate\Http\Request; 
 
 class PersonaController extends Controller
@@ -24,11 +26,17 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         // $request->validate([
-        //     'nombres' => 'required',
+        //     'nombres' => 'required', 
+        //     'apellido_paterno' => 'required',
+        //     'apellido_materno' => 'required',
+        //     'carnet_identidad' => 'required',
+        //     'fecha_nac' => 'required',
+        //     'sexo' => 'required',
+        //     'celular' => 'required',
+        //     'email' => 'required',
         // ]);
-        $personas = Persona::create($request->all());
-        Alert('Éxito', 'La Tipo de Producto se ha guardado', 'success')->showConfirmButton();
-        return redirect()->route('personas.index', $personas);
+        $personas = Persona::create($request->all()); 
+        return redirect()->route('personas.index', $personas)->with('guardar', 'El Registro se creó');
     }
 
 
@@ -60,5 +68,5 @@ class PersonaController extends Controller
         $personas = $request->personas;
         return view('admin.personas.index', compact('personas'));
     }
-
+ 
 }

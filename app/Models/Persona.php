@@ -9,9 +9,9 @@ class Persona extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['nombres', 'apellido_paterno', 'apellido_materno','carnet_identidad','fecha_nac','sexo', 'celular', 'email'];
+    protected $fillable = ['nombres', 'apellido_paterno', 'apellido_materno','carnet_identidad','fecha_nac','sexo', 'celular', 'email'];
 
-    protected $guarded=['id'];
+    //protected $guarded=['id'];
 
     public function paciente()
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Persona;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PersonaStoreRequest extends FormRequest
+class StorePersonaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -43,6 +43,4 @@ class PersonaStoreRequest extends FormRequest
             'apellido_paterno.min' => 'Name Must be 5 Chr.',
         ];
     }
-
-
 }

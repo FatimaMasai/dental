@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PersonaController;
+use App\Http\Controllers\ReporteController;
 use Illuminate\Support\Facades\Route;
 
 /*
