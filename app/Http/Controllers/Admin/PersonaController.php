@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Persona\PersonaStoreRequest;
-use App\Http\Requests\StorePersonaRequest;
-use App\Models\Persona;
-use DateTime;
+use App\Http\Controllers\Controller; 
+use App\Models\Persona; 
 use Illuminate\Http\Request; 
 
 class PersonaController extends Controller
@@ -15,28 +12,28 @@ class PersonaController extends Controller
     public function index()
     {
         
-        return view('admin.persona.index');
+        return view('admin.personas.index');
     }
 
     public function create()
     {
-        return view('admin.persona.create');
+        return view('admin.personas.create');
     }
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'nombres' => 'required', 
-        //     'apellido_paterno' => 'required',
-        //     'apellido_materno' => 'required',
-        //     'carnet_identidad' => 'required',
-        //     'fecha_nac' => 'required',
-        //     'sexo' => 'required',
-        //     'celular' => 'required',
-        //     'email' => 'required',
-        // ]);
-        $personas = Persona::create($request->all()); 
-        return redirect()->route('personas.index', $personas)->with('guardar', 'El Registro se creó');
+        $request->validate([
+            'nombres' => 'required', 
+            'apellido_paterno' => 'required',
+            'apellido_materno' => 'required',
+            'carnet_identidad' => 'required',
+            'fecha_nac' => 'required',
+            'sexo' => 'required',
+            'celular' => 'required',
+            'email' => 'required|unique:personas'
+        ]);
+        $persona = Persona::create($request->all()); 
+        return redirect()->route('personas.index', $persona)->with('guardar', 'El Registro se creó');
     }
 
 
@@ -46,27 +43,35 @@ class PersonaController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Persona $persona)
     {
-        //
+        return view('admin.personas.edit', compact('persona'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Persona $persona)
     {
-        //
+        $request->validate([
+            'nombres' => 'required', 
+            'apellido_paterno' => 'required',
+            'apellido_materno' => 'required',
+            'carnet_identidad' => 'required',
+            'fecha_nac' => 'required',
+            'sexo' => 'required',
+            'celular' => 'required',
+            'email' => "required|unique:personas,email,$persona->id"
+        ]);
+
+        $persona->update($request->all()); 
+        return redirect()->route('personas.index', $persona)->with('actualizar', 'El Registro actualizado');
     }
 
 
-    public function destroy($id)
+    public function destroy(Persona $persona)
     {
-        //
+        $persona->delete();
+        return redirect()->route('personas.index')->with('eliminar', 'ok');
     }
 
-    public function agregar(Request $request)
-    {
-        $personas = $request->personas;
-        return view('admin.personas.index', compact('personas'));
-    }
  
 }
