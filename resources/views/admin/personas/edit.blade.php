@@ -11,6 +11,7 @@
     <div class="col-md-12">
 
         {!! Form::model($persona, ['route' => ['personas.update', $persona], 'method' => 'put']) !!}
+ 
 
         <div class="row py-2">
             <div class="col-md-4">
@@ -45,7 +46,7 @@
         <div class="row py-2">
             <div class="col-md-4">
                 {!! Form::label('carnet_identidad', 'Ci') !!}
-                {!! Form::text('carnet_identidad', null, ['class' => 'form-control']) !!}
+                {!! Form::number('carnet_identidad', null, ['class' => 'form-control']) !!}
 
                 @error('carnet_identidad')
                     <span class="text-danger">{{ $message }}</span>
@@ -54,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 {!! Form::label('fecha_nac', 'Fecha Nac.  ') !!}
-                {!! Form::text('fecha_nac', null, ['class' => 'form-control']) !!}
+                {!! Form::date('fecha_nac', null, ['class' => 'form-control']) !!}
 
                 @error('fecha_nac')
                     <span class="text-danger">{{ $message }}</span>
@@ -62,8 +63,8 @@
 
             </div>
             <div class="col-md-4">
-                {!! Form::label('sexo', 'Sexo') !!}
-                {!! Form::text('sexo', null, ['class' => 'form-control']) !!}
+                {!! Form::label('sexo', 'Sexo') !!} 
+                {!!Form::select('sexo', ['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], 'Mujer',['class' => 'form-control form-control-sm'])!!}
 
                 @error('sexo')
                     <span class="text-danger">{{ $message }}</span>
@@ -85,7 +86,7 @@
             </div> 
             <div class="col-md-4">
                 {!! Form::label('email', 'Email  ') !!}
-                {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                {!! Form::email('email', null, ['class' => 'form-control']) !!}
 
                 @error('email')
                     <span class="text-danger">{{ $message }}</span>

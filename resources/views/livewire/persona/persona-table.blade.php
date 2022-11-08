@@ -37,73 +37,52 @@
                      <table class="table table-striped table-auto w-full bg-gray-50">
                          <thead class="border-b">
                              <tr class="bg-gray-100">
-                                 <th scope="col"
-                                     class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
-                                     ID
-                                 </th>
-                                 <th scope="col"
-                                     class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
-                                     NOMBRES
-                                 </th>
-                                 <th scope="col"
-                                     class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
-                                     APELLIDOS
-                                 </th>
-                                 {{-- <th scope="col" class="cursor-pointer text-left  font-medim text-gray-500 p-4 font-medium">
-                             FECHA NAC
-                         </th> --}}
-                                 <th scope="col" class="text-left p-4 font-mediu  font-medim text-gray-500m">
-                                     SEXO
-                                 </th>
-                                 <th scope="col" class="text-left p-4 font-mediu  font-medim text-gray-500m">
-                                     CELULAR
-                                 </th>
-                                 <th scope="col" class="text-left p-4 font-mediu  font-medim text-gray-500m">
-                                     EMAIL
-                                 </th>
-                                 <th scope="col" class="text-left p-4 font-mediu  font-medim text-gray-500m">
-                                     OPCIONES
-                                 </th>
+                                 <th scope="col" class="p-4 text-center ">ID </th>
+                                 <th scope="col" class="p-4 text-center ">NOMBRES </th>
+                                 <th scope="col" class="p-4 text-center">APELLIDOS </th> 
+                                 <th scope="col" class="p-4 text-center ">EMAIL</th>
+                                 <th scope="col" class="p-4 text-center ">ESTADO</th>
+                                 <th scope="col" class="p-4 text-right"  >OPCIONES</th>
                              </tr>
                          </thead>
                          <tbody>
                              @foreach ($personas as $persona)
                                  <tr class="border-b hover:bg-gray-50">
-                                     <td>
-                                         {{ $persona->id }}
-                                     </td>
-                                     <td>
-                                         {{ $persona->nombres }}
-                                     </td>
-                                     <td>
-                                         {{ $persona->apellido_paterno }} {{ $persona->apellido_materno }}
-                                     </td>
-                                     {{-- <td >
-                             {{ $persona->fecha_nac }}
-                         </td> --}}
-                                     <td>
-                                         {{ $persona->sexo }}
-                                     </td>
-                                     <td>
-                                         {{ $persona->celular }}
-                                     </td>
-                                     <td>
-                                         {{ $persona->email }}
-                                     </td>
-                                     <td width="10px">
-                                         <a href="{{ route('personas.edit', $persona) }}  "
-                                             class="btn-sm btn btn-primary">EDITAR</a>
-                                     </td>
-                                     <td width="10px">
-                                         <form action="{{ route('personas.destroy', $persona) }}"
-                                             class="d-inline formulario-eliminar" method="POST">
-                                             @csrf
-                                             @method('delete')
-                                             <button type="submit" class="btn-sm btn btn-danger">
-                                                 Eliminar
-                                             </button>
-                                         </form>
-                                     </td>
+                                    {{-- $loop->iteration --}}
+                                     <td class="py-4 text-center">{{ $persona->id }}</td> 
+                                     <td class="py-4 text-center"> {{ $persona->nombres }}</td>
+                                     <td class="py-4 text-center"> {{ $persona->apellido_paterno }} {{ $persona->apellido_materno }}</td> 
+                                     <td class="py-4 text-center">  {{ $persona->email }} </td> 
+
+                                        @if($persona->estado==1)
+                                            <td class="py-4 text-center"><span class="badge badge-success">{{ 'Activo' }}</span></td>
+                                        @elseif($persona->estado==2)
+                                            <td class="py-4 text-center"><span class="badge badge-danger">{{ 'Inactivo' }}</span></td>
+                                        @else
+                                            <td class="py-4 text-center"><span class="badge badge-warning">{{ 'Pendiente' }}</span></td>
+                                        @endif
+                              
+                                     <td class="text-right"> 
+                                        <div class="d-flex flex-row bd-highlight mb-3 " style="display: flex; justify-content: flex-end">
+
+                                            <div class="p-2 text-right bd-highlight">
+                                                <a href="{{ route('personas.edit', $persona) }}" class="btn-sm btn text-right btn-primary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </div>
+
+                                            <div class="p-2 text-right bd-highlight">
+                                                <form action="{{ route('personas.destroy', $persona) }}" class="d-inline text-right formulario-eliminar" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn-sm btn btn-danger text-right">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                        </div> 
+                                    </td> 
 
                                  </tr>
                              @endforeach
@@ -111,19 +90,21 @@
                          </tbody>
                      </table>
                  </div>
+
+                 <div class="card-footer">
+                    {{$personas->links()}}
+                </div>
+
              @else
                  <div class="col-md-4 px-6 py-4 text-center">
                      No existe ningun registro
-                 </div>
-
-             @endif
-
-
+                 </div> 
+             @endif 
          </div>
-     </div>
 
- </div>
 
+    </div> 
+    
 
  </div>
 

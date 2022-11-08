@@ -44,7 +44,7 @@
             <div class="row py-2">
                 <div class="col-md-4">
                     {!! Form::label('carnet_identidad', 'Ci') !!}
-                    {!! Form::text('carnet_identidad', null, ['class' => 'form-control']) !!}
+                    {!! Form::number('carnet_identidad', null, ['class' => 'form-control']) !!}
 
                     @error('carnet_identidad')
                         <span class="text-danger">{{ $message }}</span>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-4">
                     {!! Form::label('fecha_nac', 'Fecha Nac.  ') !!}
-                    {!! Form::text('fecha_nac', null, ['class' => 'form-control']) !!}
+                    {!! Form::date('fecha_nac', null, ['class' => 'form-control']) !!}
 
                     @error('fecha_nac')
                         <span class="text-danger">{{ $message }}</span>
@@ -61,8 +61,8 @@
 
                 </div>
                 <div class="col-md-4">
-                    {!! Form::label('sexo', 'Sexo') !!}
-                    {!! Form::text('sexo', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('sexo', 'Sexo') !!} 
+                    {!!Form::select('sexo', ['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], 'M',['class' => 'form-control form-control-sm'])!!}
 
                     @error('sexo')
                         <span class="text-danger">{{ $message }}</span>
@@ -75,7 +75,7 @@
             <div class="row">
                 <div class="col-md-4">
                     {!! Form::label('celular', 'Celular  ') !!}
-                    {!! Form::text('celular', null, ['class' => 'form-control']) !!}
+                    {!! Form::number('celular', null, ['class' => 'form-control']) !!}
 
                     @error('celular')
                         <span class="text-danger">{{ $message }}</span>
@@ -84,7 +84,7 @@
                 </div> 
                 <div class="col-md-4">
                     {!! Form::label('email', 'Email  ') !!}
-                    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
 
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
