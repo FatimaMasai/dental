@@ -23,9 +23,11 @@
                          Exportar PDF
                      </button>
                  </a>
-                 <button class="btn btn-success">
-                     EXCEL
-                 </button>
+                 <a href="{{ url('admin/excel/personas') }}">
+                    <button class="btn btn-success">
+                        Exportar PDF
+                    </button>
+                </a>
              </div>
          </div>
 

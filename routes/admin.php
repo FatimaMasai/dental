@@ -15,3 +15,6 @@ Route::resource('personas', PersonaController::class)->names('personas');
  
 //admin/ el admin se coloca en el blade en la url
 Route::get('reportes/personas', [ReporteController::class, 'reportePersonas'])->name('personas.download');
+
+//Exportar a Excel
+Route::get('excel/personas', [PersonaController::class, 'exportarExcelPersona'])->name('personasExcel.download');

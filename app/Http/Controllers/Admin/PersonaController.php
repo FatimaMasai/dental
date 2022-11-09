@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PersonaExportar;
 use App\Http\Controllers\Controller; 
 use App\Models\Persona; 
 use Illuminate\Http\Request; 
+use Maatwebsite\Excel\Facades\Excel;
+ 
 
 class PersonaController extends Controller
 {
@@ -71,6 +74,12 @@ class PersonaController extends Controller
     {
         $persona->delete();
         return redirect()->route('personas.index')->with('eliminar', 'ok');
+    }
+
+    public function exportarExcelPersona()
+    { 
+
+        return Excel::download(new PersonaExportar, 'ListaPersonaExcel.xlsx');
     }
 
  
