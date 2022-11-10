@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PacienteExportar;
 use App\Http\Controllers\Controller;
 use App\Models\Paciente;
 use App\Models\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PacienteController extends Controller
 {
@@ -120,9 +122,9 @@ class PacienteController extends Controller
         return redirect()->route('pacientes.index')->with('eliminar', 'ok');
     }
 
-    // public function exportarExcelPersona()
-    // { 
+    public function exportarExcelPaciente()
+    { 
 
-    //     return Excel::download(new PersonaExportar, 'ListaPersonaExcel.xlsx');
-    // }
+        return Excel::download(new PacienteExportar, 'ListaPacienteExcel.xlsx');
+    }
 }

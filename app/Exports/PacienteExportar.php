@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Persona;
+use App\Models\Paciente;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
@@ -12,14 +12,15 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class PersonaExportar implements FromCollection, WithCustomStartCell, WithMapping, WithHeadings, ShouldAutoSize, WithStyles
+class PacienteExportar implements FromCollection, WithCustomStartCell, WithMapping, WithHeadings, ShouldAutoSize, WithStyles
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Persona::all();
+        //php artisan make:export PacienteExportar--model=Paciente este ejecutar
+        return Paciente::all();
     }
 
     public function startCell(): string
@@ -31,7 +32,7 @@ class PersonaExportar implements FromCollection, WithCustomStartCell, WithMappin
     public function headings(): array
     {
         return [
-            'Nombre',
+            'Nombre', 
             'Apellido Paterno',
             'Apellido Materno',
             'Carnet',
@@ -39,21 +40,35 @@ class PersonaExportar implements FromCollection, WithCustomStartCell, WithMappin
             'Sexo',
             'Celular',
             'Email',
+
+            'alergia',
+            'observacion',
+            'recomendado',
+            'responsable',
+            'antecedentes',
+
+            
         ];
     }
 
-    public function map($persona): array
+    public function map($paciente): array
     {
         //mostramos solo los campos que quremos mostrar en el excel
         return [
-            $persona->nombres,
-            $persona->apellido_paterno,
-            $persona->apellido_materno,
-            $persona->carnet_identidad,
-            $persona->fecha_nac,
-            $persona->sexo,
-            $persona->celular,
-            $persona->email,
+            $paciente->persona->nombres,
+            $paciente->persona->apellido_paterno,
+            $paciente->persona->apellido_materno,
+            $paciente->persona->carnet_identidad,
+            $paciente->persona->fecha_nac,
+            $paciente->persona->sexo,
+            $paciente->persona->celular,
+            $paciente->persona->email,
+
+            $paciente->alergia, 
+            $paciente->observacion,
+            $paciente->recomendado,
+            $paciente->responsable,
+            $paciente->antecedentes,
 
 
         ];
@@ -61,8 +76,8 @@ class PersonaExportar implements FromCollection, WithCustomStartCell, WithMappin
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->setTitle('Personas');
-        $sheet->getStyle('A2:H2')->applyFromArray([
+        $sheet->setTitle('Pacientes');
+        $sheet->getStyle('A2:M2')->applyFromArray([
             'font' => [
                 'bold' => true,
                 'name' => 'Arial',
@@ -81,7 +96,7 @@ class PersonaExportar implements FromCollection, WithCustomStartCell, WithMappin
         ]);
 
 
-        $sheet->getStyle('A2:H97')->applyFromArray([
+        $sheet->getStyle('A2:M97')->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => 'thin'
@@ -90,7 +105,6 @@ class PersonaExportar implements FromCollection, WithCustomStartCell, WithMappin
         ]);
 
     }
-
 
 
 }

@@ -19,6 +19,8 @@ Route::resource('pacientes', PacienteController::class)->names('pacientes');
 //REPORTES 
 //admin/ el admin se coloca en el blade en la url
 Route::get('reportes/personas', [ReporteController::class, 'reportePersonas'])->name('personas.download');
+Route::get('reportes/pacientes', [ReporteController::class, 'reportePacientes'])->name('pacientes.download');
 
 //EXPORTAR EXCEL
 Route::get('excel/personas', [PersonaController::class, 'exportarExcelPersona'])->name('personasExcel.download');
+Route::get('excel/pacientes', [PacienteController::class, 'exportarExcelPaciente'])->name('pacienteExcel.download');

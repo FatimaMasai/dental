@@ -18,14 +18,14 @@
                         CREAR REGISTRO
                     </button>
                 </a>
-                <a href=" ">
+                <a href="{{ url('admin/reportes/pacientes') }} ">
                     <button class="btn btn-danger">
                         Exportar PDF
                     </button>
                 </a>
-                <a href=" ">
+                <a href="{{ url('admin/excel/pacientes') }} ">
                     <button class="btn btn-success">
-                        Exportar PDF
+                        Exportar Excel
                     </button>
                 </a>
             </div>
