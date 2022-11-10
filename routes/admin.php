@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PacienteController;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\PersonaController;
 use App\Http\Controllers\ReporteController;
@@ -10,11 +11,14 @@ Route::get('/', function () {
 });
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');; 
-//php artisan r:l --name=personas
+//php artisan r:l --name=pacientes
 Route::resource('personas', PersonaController::class)->names('personas');
- 
+Route::resource('pacientes', PacienteController::class)->names('pacientes');
+
+
+//REPORTES 
 //admin/ el admin se coloca en el blade en la url
 Route::get('reportes/personas', [ReporteController::class, 'reportePersonas'])->name('personas.download');
 
-//Exportar a Excel
+//EXPORTAR EXCEL
 Route::get('excel/personas', [PersonaController::class, 'exportarExcelPersona'])->name('personasExcel.download');

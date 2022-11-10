@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $table = 'personas';
 
-    protected $fillable = ['nombres', 'apellido_paterno', 'apellido_materno',
+    protected $fillable = ['id','nombres', 'apellido_paterno', 'apellido_materno',
     'carnet_identidad','fecha_nac','sexo', 
     'celular', 'email'];
 

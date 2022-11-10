@@ -337,11 +337,10 @@ return [
 
         ],
         [ 
-            'text' => 'Paciente', 
+            'text' => 'Pacientes',
+            'route'  => 'pacientes.index',
             'icon' => 'fab fa-fw fa-buffer',
-        
-
-
+            'active' => ['admin/pacientes*'],  
         ],
         [ 
             'text' => 'Doctor', 
