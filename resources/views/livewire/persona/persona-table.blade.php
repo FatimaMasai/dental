@@ -39,7 +39,7 @@
                      <table class="table table-striped table-auto w-full bg-gray-50">
                          <thead class="border-b">
                              <tr class="bg-gray-100">
-                                 <th scope="col" class="p-4 text-center ">ID </th>
+                                 <th scope="col" class="p-4 text-center ">ID </th> 
                                  <th scope="col" class="p-4 text-center ">NOMBRES </th>
                                  <th scope="col" class="p-4 text-center">APELLIDOS </th> 
                                  <th scope="col" class="p-4 text-center ">EMAIL</th>
@@ -51,7 +51,7 @@
                              @foreach ($personas as $persona)
                                  <tr class="border-b hover:bg-gray-50">
                                     {{-- $loop->iteration --}}
-                                     <td class="py-4 text-center">{{ $persona->id }}</td> 
+                                     <td class="py-4 text-center">{{ $persona->id }}</td>  
                                      <td class="py-4 text-center"> {{ $persona->nombres }}</td>
                                      <td class="py-4 text-center"> {{ $persona->apellido_paterno }} {{ $persona->apellido_materno }}</td> 
                                      <td class="py-4 text-center">  {{ $persona->email }} </td> 

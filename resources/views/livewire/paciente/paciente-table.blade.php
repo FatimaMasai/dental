@@ -40,7 +40,7 @@
                         <thead class="border-b">
                             <tr class="bg-gray-100">
                                 <th scope="col" class="p-4 text-center ">ID </th>
-                                <th scope="col" class="p-4 text-center ">PACIENTE</th>
+                                <th scope="col" class="p-4 text-center ">PACIENTE</th> 
                                 <th scope="col" class="p-4 text-center ">ALERGIA</th>
                                 <th scope="col" class="p-4 text-center ">OBSERVACION</th>
                                 <th scope="col" class="p-4 text-center ">ANTECEDENTES</th>
@@ -56,6 +56,8 @@
 
                                     <td class="py-4 text-center"> {{ $paciente->apellido_paterno }}
                                         {{ $paciente->apellido_materno }} {{ $paciente->nombres }}</td>
+                              
+
                                     <td class="py-4 text-center"> {{ $paciente->alergia }} </td>
                                     <td class="py-4 text-center"> {{ $paciente->observacion }} </td>
                                     <td class="py-4 text-center"> {{ $paciente->antecedentes }} </td>

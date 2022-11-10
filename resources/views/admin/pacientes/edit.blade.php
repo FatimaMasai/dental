@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>EDITAR</h1>
+    <h1>Editar</h1>
 @stop
 @section('content')
 
@@ -26,6 +26,10 @@
                             <label for="x_card_code" class="control-label mb-1">  APELLIDO MATERNO</label>
                             <input class="form-control" name="apellido_materno" value="{{$paciente->persona->apellido_materno}} "  type="text" >    
                         </div>
+                        
+                    </div>
+
+                    <div class="row py-2">
                         <div class="col-md-4">
                             <label for="x_card_code" class="control-label mb-1">CARNET IDEN.</label>
                             <input class="form-control" name="carnet_identidad" value="{{$paciente->persona->carnet_identidad}}"  type="text" >
@@ -35,15 +39,19 @@
                             <label for="x_card_code" class="control-label mb-1">FECHA NAC.</label>
                             <input class="form-control" name="fecha_nac" value="{{$paciente->persona->fecha_nac}}"  type="text" >
                         </div> 
-                    </div>
-
-                    <div class="row py-2">
                         <div class="col-md-4">
-                            <label for="x_card_code" class="control-label mb-1">  SEXO</label>
-                            <input class="form-control" name="sexo" value="{{$paciente->persona->sexo}}"  type="text" >
-                    
+                            <label for="x_card_code" class="control-label mb-1">  SEXO</label> 
+                              <select  class="custom-select form-control form-control-sm" id="sexo" name="sexo" type="text"> 
+                                      <option value="Mujer" @if($paciente->persona->sexo == "Mujer"){{ 'selected' }} @endif   >Mujer</option>
+                                      <option value="Hombre" @if($paciente->persona->sexo == "Hombre"){{ 'selected' }} @endif >Hombre</option>                                                              
+                              </select>  
 
                         </div>
+                       
+                    </div>
+
+
+                    <div class="row py-2">
                         <div class="col-md-4">
                             <label for="x_card_code" class="control-label mb-1">  CELULAR</label>
                             <input class="form-control" name="celular" value="{{$paciente->persona->celular}}"  type="text" >
@@ -54,15 +62,16 @@
                             <input class="form-control" name="email" value="{{$paciente->persona->email}}"  type="text" >
 
                         </div> 
-                    </div>
 
-
-                    <div class="row py-2">
                         <div class="col-md-4">
                             <label for="x_card_code" class="control-label mb-1">  ALERGIA</label>
                             <input class="form-control" name="alergia" value="{{$paciente->alergia}}"  type="text" >
 
                         </div> 
+                      
+                    </div>
+
+                    <div class="row py-2">
                         <div class="col-md-4">
                             <label for="x_card_code" class="control-label mb-1"> OBSERVACION</label>
                             <input class="form-control" name="observacion" value="{{$paciente->observacion}}"  type="text" >
@@ -72,19 +81,19 @@
                             <label for="x_card_code" class="control-label mb-1">  RECOMENDADO</label>
                             <input class="form-control" name="recomendado" value="{{$paciente->recomendado}}"  type="text" >
                         </div>  
-                    </div>
-
-                    <div class="row py-2">
                         <div class="col-md-4"> 
                             <label for="x_card_code" class="control-label mb-1">  RESPONSABLE</label>
                             <input class="form-control" name="responsable" value="{{$paciente->responsable}}"  type="text" >
                         </div> 
+                         
+                    </div> 
+                    <div class="row py-2">
                         <div class="col-md-4">
                             <label for="x_card_code" class="control-label mb-1">  ANTECEDENTES</label>
                             <input class="form-control" name="antecedentes" value="{{$paciente->antecedentes}}"  type="text" >
 
-                        </div>   
-                    </div> 
+                        </div>  
+                    </div>
 
                     <div class="form-layout-footer">
                         <input type="submit" class="btn btn-primary" value="ACTUALIZAR">
