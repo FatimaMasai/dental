@@ -88,7 +88,7 @@
                                             </div> 
 
                                             <div class="p-2 text-right bd-highlight">
-                                                <form action=" " class="d-inline text-right formulario-eliminar" method="POST">
+                                                <form action="{{ route('pacientes.destroy', $paciente->id) }}" class="d-inline text-right formulario-eliminar" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn-sm btn btn-danger text-right">

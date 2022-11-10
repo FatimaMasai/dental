@@ -72,60 +72,51 @@ class PacienteController extends Controller
 
 
     public function edit($id)
-    { 
-        $paciente = Paciente::find($id);
-        $persona = Persona::where('estado',1)->orderby('id', 'Desc')->get(); 
-        return view('admin.pacientes.edit')->with('paciente', $paciente)->with('persona', $persona);
+    {  
+        $paciente = Paciente::findOrFail($id); 
+    
+        return view('admin.pacientes.edit')->with('paciente', $paciente);
     }
 
 
     public function update(Request $request)
-    {
+    { 
         $paciente = Paciente::find($request->id);
-        $persona = Persona::find($request->persona_id);
+       
+        $persona =  Persona::find($paciente->persona_id);
 
-        $request->validate([
-            'nombres' => 'required', 
-            'apellido_paterno' => 'required',
-            'apellido_materno' => 'required',
-            'carnet_identidad' => 'required',
-            'fecha_nac' => 'required',
-            'sexo' => 'required',
-            'celular' => 'required',
-            'email' => 'required|unique:personas'
-        ]);
-        
+
         $persona->update([
-            'nombres' => $request->nombres, 
+            'nombres' => $request->nombres,
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno,
             'carnet_identidad' => $request->carnet_identidad,
             'fecha_nac' => $request->fecha_nac,
             'sexo' => $request->sexo,
             'celular' => $request->celular,
-            'email' => $request->email
-        ]); 
+            'email' => $request->email,
+        ]);
+
         $persona->save();
 
-        // $paciente->update([
-        //     'alergia' => $request->alergia,
-        //     'observacion' => $request->observacion,
-        //     'recomendado' => $request->recomendado,
-        //     'responsable' => $request->responsable,
-        //     'antecedentes' => $request->antecedentes,
-        //     //'estado' => $request->estado,
-        //     'persona_id' => $persona->id,
-        // ]);
+        $paciente->update([
+            'alergia' => $request->alergia, 
+            'observacion' => $request->observacion,
+            'recomendado' => $request->recomendado,
+            'responsable' => $request->responsable,
+            'antecedentes' => $request->antecedentes, 
+        ]);
 
-        $paciente->update($request->all()); 
-
+        $paciente->update($request->all());
         return redirect()->route('pacientes.index')->with('actualizar', 'El Registro se actualizado'); 
     }
+ 
 
 
-    public function destroy(Persona $persona)
+    public function destroy($id)
     {
-        $persona->delete();
+        $paciente = Paciente::findOrFail($id); 
+        $paciente->delete();
         return redirect()->route('pacientes.index')->with('eliminar', 'ok');
     }
 
