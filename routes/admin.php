@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriaServicioController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PacienteController;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\PersonaController;
-use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\ReporteController; 
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,8 @@ Route::get('', [HomeController::class, 'index'])->name('admin.home');;
 //php artisan r:l --name=pacientes
 Route::resource('personas', PersonaController::class)->names('personas');
 Route::resource('pacientes', PacienteController::class)->names('pacientes');
+Route::resource('categoriaServicio', CategoriaServicioController::class)->names('categoriaServicio');
+
 
 
 //REPORTES 

@@ -13,7 +13,7 @@ class Persona extends Model
 
     protected $fillable = ['id','nombres', 'apellido_paterno', 'apellido_materno',
     'carnet_identidad','fecha_nac','sexo', 
-    'celular', 'email'];
+    'celular', 'email', 'estado'];
 
     //protected $guarded=['id'];
 

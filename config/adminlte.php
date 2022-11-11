@@ -342,6 +342,15 @@ return [
             'icon' => 'fab fa-fw fa-buffer',
             'active' => ['admin/pacientes*'],  
         ],
+
+        [ 
+            'text' => 'Categoria Servicio',
+            'route'  => 'categoriaServicio.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/categoriaServicio*'],  
+        ],
+
+        
         [ 
             'text' => 'Doctor', 
             'icon' => 'fab fa-fw fa-buffer',

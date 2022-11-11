@@ -9,6 +9,10 @@ class CategoriaServicio extends Model
 {
     use HasFactory;
 
+    protected $table = 'categoria_servicios'; 
+    protected $fillable = ['id','nombre', 'estado' ];
+
+
     //relacion uno a muchos
     public function servicios()
     {
