@@ -364,6 +364,13 @@ return [
             'active' => ['admin/categoriaProductos*'],  
         ],
 
+        [ 
+            'text' => 'Producto',
+            'route'  => 'productos.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/productos*'],  
+        ],
+
         
         [ 
             'text' => 'Doctor', 

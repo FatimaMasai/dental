@@ -2,8 +2,7 @@
 
 namespace App\Http\Livewire\Servicio;
 
-use App\Models\Servicio;
-use Illuminate\Support\Facades\DB;
+use App\Models\Servicio; 
 use Livewire\Component;
 use Livewire\WithPagination;
 
