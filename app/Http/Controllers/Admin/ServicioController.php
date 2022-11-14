@@ -51,11 +51,7 @@ class ServicioController extends Controller
 
     public function update(Request $request,  Servicio $servicio)
     { 
-        $servicio->update($request->all());
-
-    
-
-
+        $servicio->update($request->all()); 
         return redirect()->route('servicios.index', $servicio)->with('actualizar', 'El Registro se actualizado');  
     }
 
