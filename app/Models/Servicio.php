@@ -9,6 +9,10 @@ class Servicio extends Model
 {
     use HasFactory;
 
+    protected $table = "servicios";
+    protected $fillable = ['id','nombre','monto','estado','categoria_servicios_id'];
+
+
     //relacion uno a mucho inversa
 
     public function categoriaServicio()

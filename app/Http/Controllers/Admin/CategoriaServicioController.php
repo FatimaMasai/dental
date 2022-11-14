@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\CategoriaServicioExportar;
 use App\Http\Controllers\Controller;
 use App\Models\CategoriaServicio;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoriaServicioController extends Controller
 {
@@ -59,5 +61,12 @@ class CategoriaServicioController extends Controller
         $categoriaServicio->update(['estado'=>2]);
         return redirect()->route('categoriaServicio.index')->with('eliminar', 'ok');
     }
+
+
+    public function exportarExcelCategoriaServicio()
+    { 
+        return Excel::download(new CategoriaServicioExportar, 'ListaCategoriaServicioExcel.xlsx');
+    }
+
     
 }

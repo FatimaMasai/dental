@@ -350,6 +350,13 @@ return [
             'active' => ['admin/categoriaServicio*'],  
         ],
 
+        [ 
+            'text' => 'Servicio',
+            'route'  => 'servicios.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/servicios*'],  
+        ],
+
         
         [ 
             'text' => 'Doctor', 

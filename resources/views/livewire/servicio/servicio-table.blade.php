@@ -1,7 +1,6 @@
 <div>
     <!-- component -->
-
-
+ 
     <div class="bg-white">
 
         <div class="row px-3">
@@ -13,17 +12,17 @@
             <div class="col-md-2"></div>
 
             <div class="col-md-4 py-4">
-                <a href="{{ route('categoriaServicio.create') }}">
+                <a href="{{ route('servicios.create') }}">
                     <button class="btn btn-info">
                         CREAR REGISTRO
                     </button>
                 </a>
-                <a href="{{ url('admin/reportes/categoriaServicios') }} ">
+                <a href="{{ url('admin/reportes/servicios') }}">
                     <button class="btn btn-danger">
                         Exportar PDF
                     </button>
                 </a>
-                <a href=" {{ url('admin/excel/categoriaServicios') }}">
+                <a href="{{ url('admin/excel/servicios') }}">
                    <button class="btn btn-success">
                        Exportar Excel
                    </button>
@@ -32,7 +31,7 @@
         </div>
 
         <div class="overflow-x-auto border-x border-t">
-            @if ($categoriaServicio->count())
+            @if ($servicios->count())
 
                 <div class="card-body">
 
@@ -40,22 +39,23 @@
                         <thead class="border-b">
                             <tr class="bg-gray-100">
                                 <th scope="col" class="p-4 text-center ">ID </th> 
-                                <th scope="col" class="p-4 text-center ">NOMBRE</th>  
-                                <th scope="col" class="p-4 text-center ">ESTADO</th> 
+                                <th scope="col" class="p-4 text-center ">SERVICIO </th> 
+                                <th scope="col" class="p-4 text-center">MONTO </th>  
+                                <th scope="col" class="p-4 text-center ">ESTADO</th>
                                 <th scope="col" class="p-4 text-right"  >OPCIONES</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categoriaServicio as $item)
+                            @foreach ($servicios as $servicio)
                                 <tr class="border-b hover:bg-gray-50">
                                    {{-- $loop->iteration --}}
-                                    <td class="py-4 text-center">{{ $item->id }}</td>  
-                                    <td class="py-4 text-center"> {{ $item->nombre }}</td> 
-                                    
+                                    <td class="py-4 text-center">{{ $servicio->id }}</td>  
+                                    <td class="py-4 text-center">{{ $servicio->nombre }}</td> 
+                                    <td class="py-4 text-center">Bs.  {{ $servicio->monto }} </td>   
 
-                                       @if($item->estado==1)
+                                       @if($servicio->estado==1)
                                            <td class="py-4 text-center"><span class="badge badge-success">{{ 'Activo' }}</span></td>
-                                       @elseif($item->estado==2)
+                                       @elseif($servicio->estado==2)
                                            <td class="py-4 text-center"><span class="badge badge-danger">{{ 'Inactivo' }}</span></td>
                                        @else
                                            <td class="py-4 text-center"><span class="badge badge-warning">{{ 'Pendiente' }}</span></td>
@@ -65,13 +65,13 @@
                                        <div class="d-flex flex-row bd-highlight mb-3 " style="display: flex; justify-content: flex-end">
 
                                            <div class="p-2 text-right bd-highlight">
-                                               <a href="{{ route('categoriaServicio.edit', $item) }}" class="btn-sm btn text-right btn-primary">
+                                               <a href="{{ route('servicios.edit', $servicio) }}" class="btn-sm btn text-right btn-primary">
                                                    <i class="fas fa-edit"></i>
                                                </a>
                                            </div>
 
                                            <div class="p-2 text-right bd-highlight">
-                                               <form action="{{ route('categoriaServicio.destroy', $item->id) }}" class="d-inline text-right formulario-eliminar" method="POST">
+                                               <form action="{{ route('servicios.destroy', $servicio) }}" class="d-inline text-right formulario-eliminar" method="POST">
                                                    @csrf
                                                    @method('delete')
                                                    <button type="submit" class="btn-sm btn btn-danger text-right">
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="card-footer">
-                   {{$categoriaServicio->links()}}
+                   {{$servicios->links()}}
                </div>
 
             @else
