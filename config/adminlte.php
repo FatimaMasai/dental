@@ -381,9 +381,9 @@ return [
         
         [ 
             'text' => 'Doctor', 
+            'route'  => 'doctores.index',
             'icon' => 'fab fa-fw fa-buffer',
-           
-
+            'active' => ['admin/doctores*'],  
 
         ],
 

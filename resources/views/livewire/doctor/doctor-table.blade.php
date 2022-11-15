@@ -1,0 +1,187 @@
+<div>
+    <!-- component -->
+
+
+    <div class="bg-white">
+
+        <div class="row px-3">
+
+            <div class="col-md-6 px-6 py-4">
+                <x-jet-input type="text" wire:model="search" class="w-full form-control"
+                    placeholder="Buscar por apellidos" />
+            </div>
+            <div class="col-md-2"></div>
+
+            <div class="col-md-4 py-4">
+                <a href="{{ route('doctores.create') }}">
+                    <button class="btn btn-info">
+                        CREAR REGISTRO
+                    </button>
+                </a>
+                {{-- <a href="{{ url('admin/reportes/doctores') }} ">
+                    <button class="btn btn-danger">
+                        Exportar PDF
+                    </button>
+                </a>
+                <a href="{{ url('admin/excel/doctores') }} ">
+                    <button class="btn btn-success">
+                        Exportar Excel
+                    </button>
+                </a> --}}
+            </div>
+        </div>
+
+        <div class="overflow-x-auto border-x border-t">
+            @if ($doctores->count())
+
+                <div class="card-body">
+
+                    <table class="table table-striped table-auto w-full bg-gray-50">
+                        <thead class="border-b">
+                            <tr class="bg-gray-100">
+                                <th scope="col" class="p-4 text-center ">ID </th>
+                                <th scope="col" class="p-4 text-center ">DOCTOR</th> 
+                                <th scope="col" class="p-4 text-center ">ESPECIALIDAD</th> 
+                                <th scope="col" class="p-4 text-center ">ESTADO</th>
+                                <th scope="col" class="p-4 text-right">OPCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($doctores as $doctore)
+                                <tr class="border-b hover:bg-gray-50">
+                                    {{-- $loop->iteration --}}
+                                    <td class="py-4 text-center">{{ $doctore->id }}</td>
+
+                                    <td class="py-4 text-center"> {{ $doctore->apellido_paterno }}
+                                    {{ $doctore->apellido_materno }} {{ $doctore->nombres }}</td> 
+
+                                    <td class="py-4 text-center">{{ $doctore->especialidad }}</td>
+
+                                     @if ($doctore->estado == 1)
+                                           <td class="py-4 text-center"><span class="badge badge-success">{{ 'Activo' }}</span></td>
+                                       @elseif($doctore->estado==2)
+                                           <td class="py-4 text-center"><span class="badge badge-danger">{{ 'Inactivo' }}</span></td>
+                                       @else
+                                           <td class="py-4 text-center"><span class="badge badge-warning">{{ 'Pendiente' }}</span></td>
+                                       @endif 
+
+                                    <td class="text-right">
+                                        <div class="d-flex flex-row bd-highlight mb-3 "
+                                            style="display: flex; justify-content: flex-end">
+
+                                            <div class="p-2 text-right bd-highlight">
+                                                
+                                                <a href="{{ route('doctores.edit', $doctore->id) }}" class="btn-sm btn text-right btn-primary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a> 
+                                            </div>
+
+                                            {{-- <div class="p-2 text-right bd-highlight">
+                                                <a href=" {{ route('doctores.show', $doctore->id) }}" class="btn-sm btn text-right btn-warning">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>                                               
+                                            </div>  --}}
+
+                                            <div class="p-2 text-right bd-highlight">
+                                                <form action="{{ route('doctores.destroy', $doctore->id) }}" class="d-inline text-right formulario-eliminar" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn-sm btn btn-danger text-right">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+
+                                        
+                                    </td>
+
+                                    
+
+
+
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-footer">
+                    {{ $doctores->links() }}
+                </div>
+            @else
+                <div class="col-md-4 px-6 py-4 text-center">
+                    No existe ningun registro
+                </div>
+            @endif
+        </div>
+
+
+    </div>
+
+
+</div>
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {{-- CREAR UN NUEVO REGISTRO --}}
+
+    @if (session('guardar'))
+        <script>
+            Swal.fire(
+                'Éxito!',
+                'El Registro se creó',
+                'success'
+            )
+        </script>
+    @endif
+
+    {{-- ACTUALIZAR REGISTRO --}}
+
+    @if (session('actualizar'))
+        <script>
+            Swal.fire(
+                'Éxito!',
+                'El Registro se actualizo',
+                'success'
+            )
+        </script>
+    @endif
+
+    {{-- ELIMINAR REGISTRO --}}
+    <script>
+        $('.formulario-eliminar').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: '¿Está seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, bórralo!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+
+                }
+            })
+
+        });
+    </script>
+
+    @if (session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El registro ha sido eliminado.',
+                'success'
+            )
+        </script>
+    @endif
+
+@stop

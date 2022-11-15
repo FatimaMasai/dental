@@ -1,8 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
-use App\Models\Especialidad;
+ 
 use App\Models\Persona;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,8 +14,9 @@ class DoctorFactory extends Factory
     public function definition()
     {
         return [ 
+            'especialidad' => $this->faker->word(15), 
             'estado' => $this->faker->randomElement([1,2]),
-            'especialidads_id' => Especialidad::all()->random()->id,
+            // 'especialidads_id' => Especialidad::all()->random()->id,
             'persona_id' => Persona::all()->random()->id,
         ];
     }

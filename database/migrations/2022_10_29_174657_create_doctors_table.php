@@ -11,14 +11,15 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->string('especialidad');
   
             $table->enum('estado', [1, 2])->default(1);
 
             $table->unsignedBigInteger('persona_id'); 
             $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade'); 
 
-            $table->unsignedBigInteger('especialidads_id'); 
-            $table->foreign('especialidads_id')->references('id')->on('especialidads')->onDelete('cascade'); 
+            // $table->unsignedBigInteger('especialidads_id'); 
+            // $table->foreign('especialidads_id')->references('id')->on('especialidads')->onDelete('cascade'); 
 
 
             $table->timestamps();
