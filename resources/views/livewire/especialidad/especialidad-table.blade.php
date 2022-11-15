@@ -18,21 +18,21 @@
                         CREAR REGISTRO
                     </button>
                 </a>
-                <a href="{{ url('admin/reportes/categoriaServicios') }} ">
+                {{-- <a href="">
                     <button class="btn btn-danger">
                         Exportar PDF
                     </button>
                 </a>
-                <a href=" {{ url('admin/excel/categoriaServicios') }}">
+                <a href="">
                    <button class="btn btn-success">
                        Exportar Excel
                    </button>
-               </a>
+               </a> --}}
             </div>
         </div>
 
         <div class="overflow-x-auto border-x border-t">
-            @if ($categoriaServicio->count())
+            @if ($especialidades->count())
 
                 <div class="card-body">
 
@@ -46,16 +46,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categoriaServicio as $item)
+                            @foreach ($especialidades as $especialidad)
                                 <tr class="border-b hover:bg-gray-50">
                                    {{-- $loop->iteration --}}
-                                    <td class="py-4 text-center">{{ $item->id }}</td>  
-                                    <td class="py-4 text-center"> {{ $item->nombre }}</td> 
+                                    <td class="py-4 text-center">{{ $especialidad->id }}</td>  
+                                    <td class="py-4 text-center"> {{ $especialidad->nombre }}</td> 
                                     
 
-                                       @if($item->estado==1)
+                                       @if($especialidad->estado==1)
                                            <td class="py-4 text-center"><span class="badge badge-success">{{ 'Activo' }}</span></td>
-                                       @elseif($item->estado==2)
+                                       @elseif($especialidad->estado==2)
                                            <td class="py-4 text-center"><span class="badge badge-danger">{{ 'Inactivo' }}</span></td>
                                        @else
                                            <td class="py-4 text-center"><span class="badge badge-warning">{{ 'Pendiente' }}</span></td>
@@ -65,13 +65,13 @@
                                        <div class="d-flex flex-row bd-highlight mb-3 " style="display: flex; justify-content: flex-end">
 
                                            <div class="p-2 text-right bd-highlight">
-                                               <a href="{{ route('categoriaServicio.edit', $item) }}" class="btn-sm btn text-right btn-primary">
+                                               <a href="{{ route('especialidades.edit', $especialidad) }}" class="btn-sm btn text-right btn-primary">
                                                    <i class="fas fa-edit"></i>
                                                </a>
                                            </div>
 
                                            <div class="p-2 text-right bd-highlight">
-                                               <form action="{{ route('categoriaServicio.destroy', $item->id) }}" class="d-inline text-right formulario-eliminar" method="POST">
+                                               <form action="{{ route('especialidades.destroy', $especialidad->id) }}" class="d-inline text-right formulario-eliminar" method="POST">
                                                    @csrf
                                                    @method('delete')
                                                    <button type="submit" class="btn-sm btn btn-danger text-right">
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="card-footer">
-                   {{$categoriaServicio->links()}}
+                   {{$especialidades->links()}}
                </div>
 
             @else

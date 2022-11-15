@@ -9,6 +9,10 @@ class Especialidad extends Model
 {
     use HasFactory;
 
+    protected $table = 'especialidads'; 
+    protected $fillable = ['id','nombre', 'estado' ];
+
+
     //relacion uno a muchos
     public function doctors()
     {

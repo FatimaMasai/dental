@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriaProductoController;
 use App\Http\Controllers\Admin\CategoriaServicioController;
+use App\Http\Controllers\Admin\EspecialidadController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PacienteController;
 use Illuminate\Support\Facades\Route; 
@@ -16,15 +17,16 @@ Route::get('/', function () {
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
-//php artisan r:l --name=productos
-//php artisan make:controller Admin/ProductoController
-//php artisan make:livewire Producto/ProductoTable 
+//php artisan r:l --name=categoriaServicio
+//php artisan make:controller Admin/EspecialidadController
+//php artisan make:livewire Especialidad/EspecialidadTable 
 Route::resource('personas', PersonaController::class)->names('personas');
 Route::resource('pacientes', PacienteController::class)->names('pacientes');
 Route::resource('categoriaServicio', CategoriaServicioController::class)->names('categoriaServicio');
 Route::resource('servicios', ServicioController::class)->names('servicios');
 Route::resource('categoriaProductos', CategoriaProductoController::class)->names('categoriaProductos');
 Route::resource('productos', ProductoController::class)->names('productos');
+Route::resource('especialidades', EspecialidadController::class)->names('especialidades');
 
 //REPORTES  
 //admin/ el admin se coloca en el blade en la url

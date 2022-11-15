@@ -371,6 +371,13 @@ return [
             'active' => ['admin/productos*'],  
         ],
 
+        [ 
+            'text' => 'Especialidad',
+            'route'  => 'especialidades.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/especialidades*'],  
+        ],
+
         
         [ 
             'text' => 'Doctor', 
