@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PacienteController;
 use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\Admin\PersonaController;
 use App\Http\Controllers\Admin\ProductoController;
+use App\Http\Controllers\Admin\ProveedorController;
 use App\Http\Controllers\Admin\ServicioController; 
 use App\Http\Controllers\ReporteController;
 
@@ -18,9 +19,9 @@ Route::get('/', function () {
 
 Route::get('', [HomeController::class, 'index'])->name('admin.home');
 
-//php artisan r:l --name=doctores
-//php artisan make:controller Admin/DoctorController
-//php artisan make:livewire Docto/DoctoTable 
+//php artisan r:l --name=proveedores
+//php artisan make:controller Admin/ProveedorController
+//php artisan make:livewire Proveedor/ProveedorTable 
 Route::resource('personas', PersonaController::class)->names('personas');
 Route::resource('pacientes', PacienteController::class)->names('pacientes');
 Route::resource('categoriaServicio', CategoriaServicioController::class)->names('categoriaServicio');
@@ -29,6 +30,7 @@ Route::resource('categoriaProductos', CategoriaProductoController::class)->names
 Route::resource('productos', ProductoController::class)->names('productos');
 Route::resource('especialidades', EspecialidadController::class)->names('especialidades');
 Route::resource('doctores', DoctorController::class)->names('doctores');
+Route::resource('proveedores', ProveedorController::class)->names('proveedores');
 
 //REPORTES  
 //admin/ el admin se coloca en el blade en la url

@@ -387,6 +387,14 @@ return [
 
         ],
 
+        [ 
+            'text' => 'Proveedor', 
+            'route'  => 'proveedores.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'active' => ['admin/proveedores*'],  
+
+        ],
+
 
         [
             'text'    => 'multilevel',

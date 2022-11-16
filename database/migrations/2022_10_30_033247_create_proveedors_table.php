@@ -11,15 +11,15 @@ return new class extends Migration
     {
         Schema::create('proveedors', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('empresa');
             $table->integer('nit'); 
             $table->enum('estado', [1, 2])->default(1);
             
             $table->unsignedBigInteger('persona_id');
-            $table->unsignedBigInteger('empresa_id');
+            // $table->unsignedBigInteger('empresa_id');
 
             $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade'); 
+            // $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade'); 
 
             $table->timestamps();
         });
